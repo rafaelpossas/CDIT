@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Counting Code Lines</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/utils/hash.js"></script>
+    <script src="js/services/bloomfilter.js"></script>
+    <script src="js/ex4_app.js"></script>
+</head>
+<body>
+<div id="page-wrapper">
+
+    <h1>Bloomfilter</h1>
+    <div>
+        Select a word file:
+        <input type="file" id="fileInput">
+    </div>
+    <div id="testmember" class="insetbox">
+        <p>Test an element for membership: <input id="membership"> <button id="btnTest"> Test</button>
+
+        <p>Is the element in the set? <span id="ismember">no</span>
+
+    </div>
+    <pre id="fileDisplayArea"/>
+
+</div>
+
+
+</body>
+</html>

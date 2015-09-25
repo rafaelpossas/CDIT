@@ -1,0 +1,17 @@
+{
+  "name": "bloomfilter",
+  "version": "0.1.0",
+  "scripts":{
+    "test": "karma start my.conf.js"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-connect": "^0.2.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6",
+    "karma-safari-launcher": "^0.1.1"
+  }
+}
