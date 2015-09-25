@@ -4,7 +4,9 @@
   - words.txt - File used to test the bloomfilter
   - en_words.txt - List of words used to test the Phone matching application
   - javacode.java - File used to test the counting code application
+
 ## How to use the JavaScript Application
+
   - Install NPM
   - run npm install on the root (/JavaScript)
   - run npm test to run the tests
