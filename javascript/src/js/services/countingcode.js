@@ -11,7 +11,7 @@ var CountingCode = function(){
         code: /^.*\s*/ // If the line represents code.
     };
 
-    var getLineType = function(line,openMultiLineComment) {
+    CountingCode.prototype.getLineType = function(line,openMultiLineComment) {
 
         var type;
 
@@ -48,14 +48,14 @@ var CountingCode = function(){
         return type;
 
     }
-    var countLines = function (text){
+    CountingCode.prototype.countLines = function (text){
         var lines = text.split('\n');
         var count = 0;
         var openMultiLineComment = false;
         var type;
-
+        var self = this;
         lines.forEach(function(line){
-            type = getLineType(line,openMultiLineComment);
+            type = self.getLineType(line,openMultiLineComment);
             if(type == 'code'){
                 count++;
                 openMultiLineComment = false; // If a code was detected it means that the Multiline comment was closed
@@ -67,15 +67,15 @@ var CountingCode = function(){
         });
         return count;
     }
-    var readLines = function (file) {
-
-        var promise = new Promise(function(resolve,reject){
+    CountingCode.prototype.readLines = function (file) {
+        var reader = new FileReader();
+        var promise = new Promise(resolver.bind(this));
+        
+        function resolver(resolve,reject){
             if (file) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
+                function onLoad(e){
                     var result = reader.result;
-                    var count = countLines(result);
+                    var count = this.countLines(result);
                     var detail = {
                         count: count,
                         result: result
@@ -83,17 +83,20 @@ var CountingCode = function(){
                     resolve(detail);
                 }
 
+                reader.onload = onLoad.bind(this)
+
                 reader.readAsText(file);
+
+
             }else{
                 reject("File not found!");
             }
-        });
+        }
+
         return promise;
 
     }
-    CountingCode.prototype.countLines = countLines;
-    CountingCode.prototype.getLineType = getLineType;
-    CountingCode.prototype.readLines = readLines;
+
 
 
 
